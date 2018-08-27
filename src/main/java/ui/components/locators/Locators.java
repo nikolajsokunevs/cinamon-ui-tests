@@ -8,8 +8,9 @@ public interface Locators {
 
     enum MainPage implements Locators{
 
-        BTN_ACCEPT_COOKIES(By::cssSelector, "#cookie_confirm_body button"),
-        LNK_LANGUAGE(By::cssSelector, ".menu_lang>a.a_menu");
+        BTN_NO_NEW_VERSION_PROMO(By::cssSelector, "#promo-text a"),
+        BTN_CURRENT_LANGUAGES(By::cssSelector, "#langmenu li.active a"),
+        BTN_LANGUAGE(By::xpath, "//ul[@id='langmenu']/li/a[text()='%s']");
 
         private String id;
         private Function<String, By> function;

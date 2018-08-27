@@ -19,17 +19,21 @@ public class MainModel {
     protected String languagePrefix = "";
 
     public MainModel(String languagePrefix) {
-        this.languagePrefix = languagePrefix.toLowerCase();
+        this.languagePrefix = languagePrefix.toUpperCase();
     }
 
     static {
-        if(isElementDisplayed(BTN_ACCEPT_COOKIES.get())){
-            click(BTN_ACCEPT_COOKIES.get());
+        if(isElementDisplayed(BTN_NO_NEW_VERSION_PROMO.get())){
+            click(BTN_NO_NEW_VERSION_PROMO.get());
         }
     }
 
     @Step
     public MainModel changeLanguage() {
-              return this;
+        if (!this.languagePrefix.equals(getText(BTN_CURRENT_LANGUAGES.get()))){
+            click(BTN_LANGUAGE.get(this.languagePrefix));
+        }
+        return this;
     }
+
 }

@@ -15,11 +15,11 @@ import java.util.List;
 public class FirstTests extends TestContext {
 
     @ParameterizedTest
-    @ValueSource(strings = {"RU", "LV", "EN"})
-    //@ValueSource(strings = {"RU"})
+    //@ValueSource(strings = {"RUS", "LAT", "ENG"})
+    @ValueSource(strings = {"RUS"})
     @Story("SomeStory")
     @Dataset("Dataset")
-    void verifyItemsCanBeAddedToBookmarkListTest(String language) {
+    void verifyUserIsSelect(String language) {
         open(language);
     }
 }
