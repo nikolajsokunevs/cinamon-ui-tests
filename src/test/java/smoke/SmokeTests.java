@@ -17,7 +17,7 @@ public class SmokeTests extends TestContext {
     @ParameterizedTest
     //@ValueSource(strings = {"RUS", "LAT", "ENG"})
     @ValueSource(strings = {"RUS"})
-    @Story("SomeStory")
+    @Story("Login")
     @Dataset("Dataset")
     void verifyLoginWorksProperly(String language) {
         open(language).
@@ -26,5 +26,18 @@ public class SmokeTests extends TestContext {
                 verifyUserIsLoggedIn(data).
                 navigateToLoginModel().
                 verifyUserDetails(data);
+    }
+
+    @ParameterizedTest
+    //@ValueSource(strings = {"RUS", "LAT", "ENG"})
+    @ValueSource(strings = {"RUS"})
+    @Story("Logout")
+    @Dataset("Dataset")
+    void verifyLogoutWorksProperly(String language) {
+        open(language).
+                navigateToLoginModel().
+                login(data).
+                doLogout().
+                verifyUserIsNotLoggedIn();
     }
 }

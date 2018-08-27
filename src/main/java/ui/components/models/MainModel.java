@@ -1,6 +1,7 @@
 package ui.components.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static support.web.WebElementHelper.*;
 
@@ -38,9 +39,22 @@ public class MainModel {
     }
 
     @Step
+    public MainModel doLogout(){
+        click(BTN_LOGOUT.get());
+        waitForInivsibilityOfElement(BTN_LOGOUT.get());
+        return this;
+    }
+
+    @Step
     public MainModel verifyUserIsLoggedIn(DataProvider data){
-        assertTrue(isElementDisplayed(BTN_LOGOUT.get()), "Logaout button is not displayed");
+        assertTrue(isElementDisplayed(BTN_LOGOUT.get()), "Logout button is not displayed");
         assertEquals(data.getData("fullName"), getText(LNK_LOGIN.get()));
+        return this;
+    }
+
+    @Step
+    public MainModel verifyUserIsNotLoggedIn(){
+        assertFalse(isElementDisplayed(BTN_LOGOUT.get()), "Logout button is display");
         return this;
     }
 }
