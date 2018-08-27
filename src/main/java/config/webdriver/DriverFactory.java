@@ -78,12 +78,13 @@ public class DriverFactory {
                 String desiredBrowserVersion = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.DESIRED_BROWSER_VERSION);
                 String desiredPlatform = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.DESIRED_PLATFORM);
 
+                desiredCapabilities.setCapability("enableVNC", true);
                 if (null != desiredPlatform && !desiredPlatform.isEmpty()) {
-                    desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
+                    //desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
                 }
 
                 if (null != desiredBrowserVersion && !desiredBrowserVersion.isEmpty()) {
-                    desiredCapabilities.setVersion(desiredBrowserVersion);
+                    //desiredCapabilities.setVersion(desiredBrowserVersion);
                 }
                 webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
 

@@ -12,6 +12,7 @@ import java.util.Map;
 public class DataProvider {
 
     private Map<String, Map<String, String>> testData = new HashMap<String, Map<String, String>>();
+    private static final String COMMON="common";
 
     public DataProvider(String name) {
         ObjectMapper mapper = new ObjectMapper();
@@ -28,6 +29,14 @@ public class DataProvider {
             return testData.get(dataset).get(field);
         } catch (NullPointerException er) {
             throw new IncorrectTestDataException(String.format("Test data does not contains field '%s' in dataset '%s'", field, dataset));
+        }
+    }
+
+    public String getData(String field) {
+        try {
+            return testData.get(COMMON).get(field);
+        } catch (NullPointerException er) {
+            throw new IncorrectTestDataException(String.format("Test data does not contains field '%s' in dataset '%s'", field, COMMON));
         }
     }
 

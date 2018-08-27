@@ -12,14 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Feature("Smoke")
-public class FirstTests extends TestContext {
+public class SmokeTests extends TestContext {
 
     @ParameterizedTest
     //@ValueSource(strings = {"RUS", "LAT", "ENG"})
     @ValueSource(strings = {"RUS"})
     @Story("SomeStory")
     @Dataset("Dataset")
-    void verifyUserIsSelect(String language) {
-        open(language);
+    void verifyLoginWorksProperly(String language) {
+        open(language).
+                navigateToLoginModel().
+                login(data).
+                verifyUserIsLoggedIn(data).
+                navigateToLoginModel().
+                verifyUserDetails(data);
     }
 }

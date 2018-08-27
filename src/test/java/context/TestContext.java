@@ -15,6 +15,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import static support.web.WebElementHelper.executeJS;
 import static support.web.WebElementHelper.navigateToPage;
 
 import ui.components.models.MainModel;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static config.ApplicationProperties.ApplicationProperty.APP_URL;
+import static support.web.WebElementHelper.refresh;
 
 @ExtendWith(AllureJunit5AnnotationProcessor.class)
 @ExtendWith(TestContext.AfterTestExecution.class)

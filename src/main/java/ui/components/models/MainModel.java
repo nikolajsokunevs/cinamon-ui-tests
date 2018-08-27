@@ -1,17 +1,16 @@
 package ui.components.models;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static support.web.WebElementHelper.*;
-import static utils.Utils.*;
 
-import exception.IncorrectTestDataException;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.DataProvider;
 
 import static ui.components.locators.Locators.MainPage.*;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainModel {
 
@@ -22,18 +21,26 @@ public class MainModel {
         this.languagePrefix = languagePrefix.toUpperCase();
     }
 
-    static {
-        if(isElementDisplayed(BTN_NO_NEW_VERSION_PROMO.get())){
-            click(BTN_NO_NEW_VERSION_PROMO.get());
-        }
-    }
-
     @Step
     public MainModel changeLanguage() {
+        executeJS("document.cookie='promo=true;; expires=Mon, 27 Aug 2019 18:34:53 GMTpath=/'");
+        click(BTN_CLOSE_NEW_VERSION_PROMO.get());
         if (!this.languagePrefix.equals(getText(BTN_CURRENT_LANGUAGES.get()))){
             click(BTN_LANGUAGE.get(this.languagePrefix));
         }
         return this;
     }
 
+    @Step
+    public LoginModel navigateToLoginModel(){
+        click(LNK_LOGIN.get());
+        return new LoginModel(languagePrefix);
+    }
+
+    @Step
+    public MainModel verifyUserIsLoggedIn(DataProvider data){
+        assertTrue(isElementDisplayed(BTN_LOGOUT.get()), "Logaout button is not displayed");
+        assertEquals(data.getData("fullName"), getText(LNK_LOGIN.get()));
+        return this;
+    }
 }

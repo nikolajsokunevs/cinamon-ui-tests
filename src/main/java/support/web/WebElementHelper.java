@@ -39,6 +39,11 @@ public class WebElementHelper {
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public static WebElement waitForElement(By locator, int timeout) {
+        WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), timeout);
+        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
     public static boolean waitForInivsibilityOfElement(By locator) {
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
@@ -105,7 +110,11 @@ public class WebElementHelper {
     }
 
     public static String getText(By locator) {
-        return waitForVisibility(locator).getText();
+        String result=waitForVisibility(locator).getText();
+        if (result==null||"".equals(result)){
+            return getAttribute(locator, "value");
+        }
+        return result;
     }
 
     public static String getAttribute(By locator, String attribute) {
@@ -131,9 +140,19 @@ public class WebElementHelper {
         DriverBase.getDriver().get(url);
     }
 
+    public static void refresh() {
+        logger.info("Refresh page");
+        DriverBase.getDriver().navigate().refresh();
+    }
+
     public static Alert waitForAlert() {
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         return webDriverWait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public static void scrollToElement(By locator) {
+        String scrollToElement = "arguments[0].scrollIntoView(true);";
+        ((JavascriptExecutor) DriverBase.getDriver()).executeScript(scrollToElement,  waitForElement(locator));
     }
 
     public static void scrollToCenterOfScreen(By locator) {

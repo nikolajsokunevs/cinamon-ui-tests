@@ -1,11 +1,16 @@
 {
   "ENG": {
-    "test":"test"
   },
   "RUS": {
-    "test":"test"
   },
   "LAT": {
-    "test":"test"
+  },
+  "common":{
+    "login":"fake@email.com",
+    "password":"password1",
+    "fullName":"NEO HW",
+    "firstName":"Neo",
+    "lastName":"Hw",
+    "phone":"2345678"
   }
 }
