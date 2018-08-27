@@ -1,4 +1,4 @@
-Selenium / Allure / JUnit5 
+Selenium / Allure / JUnit5  [![Build Status](https://travis-ci.com/nokunev/cinamon-ui-tests.svg?branch=master)](https://travis-ci.com/nokunev/cinamon-ui-tests)
 =======================
 ### How to run test?
         mvn clean install test    - execute all tests
