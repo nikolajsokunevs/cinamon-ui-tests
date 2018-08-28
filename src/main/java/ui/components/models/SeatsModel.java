@@ -1,7 +1,6 @@
 package ui.components.models;
 
 import com.google.gson.Gson;
-import config.webdriver.DriverBase;
 import exception.IncorrectTestDataException;
 import meta.Seat;
 import org.openqa.selenium.By;
@@ -18,18 +17,18 @@ public class SeatsModel extends MainModel{
         super(languagePrefix);
     }
 
-    public SeatsModel selectTickets(int ticketsCount, int expectedRow){
+    public SeatsModel selectTickets(int ticketsCount, int[] expectedRows){
         List<Seat> seats=getAllSeatsAsObjects(waitForElements(LBL_ALL_SEATS.get()));
         List<Seat> availableSeats= seats.stream().filter(x->!"Sold".equals(x.getStatus())).collect(Collectors.toList());
         if (availableSeats.size()<ticketsCount){
             throw new IncorrectTestDataException("Incorrect testing data. Not possible select "+ticketsCount+" tickets.");
         }
-        List<Seat> seatsInExpectedRow= seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList());
-        if(seatsInExpectedRow.size()>=ticketsCount){
-            clickOnSeats(seatsInExpectedRow, ticketsCount);
-        }else {
-            clickOnSeats(availableSeats, ticketsCount);
-        }
+       // List<Seat> seatsInExpectedRow= seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList());
+        //if(seatsInExpectedRow.size()>=ticketsCount){
+        //    clickOnSeats(seatsInExpectedRow, ticketsCount);
+        //}else {
+         //   clickOnSeats(availableSeats, ticketsCount);
+       // }
         return this;
     }
 
@@ -46,5 +45,9 @@ public class SeatsModel extends MainModel{
             allSeatsAsObjects.add(seat);
         }
         return allSeatsAsObjects;
+    }
+
+    private boolean isRowAvailableForSelect(List<Seat> seats, int expectedRow, int ticketCount){
+        return seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList()).size()>=ticketCount;
     }
 }

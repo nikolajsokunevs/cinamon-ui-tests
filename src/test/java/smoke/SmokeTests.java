@@ -37,7 +37,7 @@ public class SmokeTests extends TestContext {
 
     @ParameterizedTest
     @ValueSource(strings = {"RUS"})
-    @Story("Logout")
+    @Story("SelectSeats")
     @Dataset("Dataset")
     void verifyUserCanSelectSeats(String language) {
         open(language).
