@@ -155,6 +155,11 @@ public class WebElementHelper {
         ((JavascriptExecutor) DriverBase.getDriver()).executeScript(scrollToElement,  waitForElement(locator));
     }
 
+    public static void scrollToElement(WebElement element) {
+        String scrollToElement = "arguments[0].scrollIntoView(true);";
+        ((JavascriptExecutor) DriverBase.getDriver()).executeScript(scrollToElement, element);
+    }
+
     public static void scrollToCenterOfScreen(By locator) {
         waitForVisibility(locator);
         String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
