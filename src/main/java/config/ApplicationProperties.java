@@ -28,7 +28,7 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.239.132:4444");
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.value, "");
                     setProperty(ApplicationProperty.DESIRED_PLATFORM.value, "");
-                    setProperty(ApplicationProperty.ENABLE_VIDEO.value, "true");
+                    setProperty(ApplicationProperty.ENABLE_VIDEO.value, "false");
 
                     //Proxy settings
                     setProperty(ApplicationProperty.BROWSER_PROXY_ENABLED.value, "false");
