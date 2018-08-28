@@ -80,16 +80,25 @@ public class WebElementHelper {
     }
 
     public static void click(By locator) {
+        logger.info("Click at element - " + locator);
         scrollToElement(locator);
         waitForElementToBeClickable(locator).click();
     }
 
+    public static void actionClick(By locator) {
+        logger.info("Click at element - " + locator);
+        Actions action = new Actions(DriverBase.getDriver());
+        action.click(waitForElement(locator)).build().perform();
+    }
+
     public static void jsClick(By locator) {
+        logger.info("Click at element - " + locator);
         WebElement element = waitForElement(locator);
         jsClick(element);
     }
 
     public static void jsClick(WebElement element) {
+        logger.info("Click at element - " + element);
         JavascriptExecutor executor = (JavascriptExecutor) DriverBase.getDriver();
         executor.executeScript("arguments[0].click();", element);
     }
@@ -110,6 +119,7 @@ public class WebElementHelper {
     }
 
     public static String getText(By locator) {
+        logger.info("Get text from - " + locator);
         String result=waitForVisibility(locator).getText();
         if (result==null||"".equals(result)){
             return getAttribute(locator, "value");

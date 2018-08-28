@@ -1,5 +1,6 @@
 package ui.components.models;
 
+import io.qameta.allure.Step;
 import meta.Seat;
 import org.openqa.selenium.By;
 import utils.DataProvider;
@@ -21,6 +22,7 @@ public class PaymentModel extends MainModel {
         super(languagePrefix);
     }
 
+    @Step
     public PaymentModel verifySeatsWereCorrectlySelected(List<Seat> seats, DataProvider data) {
         Map<Integer, List<Seat>> seatsGroupedByRow = seats.stream().collect(
                 Collectors.groupingBy(Seat::getRowId, Collectors.toList()));
@@ -36,17 +38,20 @@ public class PaymentModel extends MainModel {
         return this;
     }
 
+    @Step
     public PaymentModel verifyTotalPriceIsCorrect(String expectedPrice) {
         String actualPrice = getText(LBL_TOTAL_PRICE.get());
         assertEquals(expectedPrice, actualPrice);
         return this;
     }
 
+    @Step
     public PaymentModel verifyAllPaymentMethodsAreDisplayed(int expectedPaymentMethodCount) {
         assertEquals(expectedPaymentMethodCount, waitForElements(LBL_PAYMENT_METHODS.get()).size());
         return this;
     }
 
+    @Step
     public TicketsModel changeOrder(){
         click(BTN_CHANGE_OREDER.get());
         return new TicketsModel(languagePrefix);

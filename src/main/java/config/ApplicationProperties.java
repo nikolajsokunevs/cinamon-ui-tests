@@ -18,13 +18,13 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.WAIT_TIMEOUT.value, "10");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT_LNG.value, "30");
 
-                    setProperty(ApplicationProperty.TARGET_BROWSER.value, "FIREFOX"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX
+                    setProperty(ApplicationProperty.TARGET_BROWSER.value, "CHROME"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX
 
                     //application URL's
                     setProperty(ApplicationProperty.APP_URL.value, "http://cinamonkino.lv");
 
                     //Selenium grid settings
-                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "true");
+                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "false");
                     setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.239.132:4444");
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.value, "");
                     setProperty(ApplicationProperty.DESIRED_PLATFORM.value, "");
