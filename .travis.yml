@@ -8,3 +8,7 @@ addons:
   artifacts:
     paths:
        target/site/allure-maven/index.html
+after_failure:
+  - "travis-artifacts upload --path target/site/allure-maven/index.html"
+after_success: 
+  - "travis-artifacts upload --path target/site/allure-maven/index.html"
