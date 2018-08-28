@@ -5,8 +5,8 @@ script:
   - mvn allure:report
 deploy:
     provider: releases
-    user: "LOGIN"
-    password: "PASSWORD"
+    user: $LOGIN
+    password: $PASSWORD
     file: "target/site/allure-maven/index.html"
     skip_cleanup: true
     on:
