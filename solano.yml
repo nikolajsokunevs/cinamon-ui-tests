@@ -1,9 +1,0 @@
-java:
-  java_version: java-8-openjdk
-  maven_version: 3.3
-
-tests:
-  command: mvn clean install test -Dselenium.remoteDriver=true -Dselenium.seleniumGridURL=http://46.101.239.132:4444/wd/hub
-  mode: basic
-  report_files:
-    - "target/site/allure-maven/index.html"
