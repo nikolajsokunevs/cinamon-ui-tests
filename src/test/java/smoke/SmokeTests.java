@@ -15,7 +15,7 @@ import java.util.List;
 public class SmokeTests extends TestContext {
 
     @ParameterizedTest
-    @ValueSource(strings = {"RUS"})//, "LAT", "ENG"})
+    @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Login")
     @Dataset("Dataset")
     void verifyLoginWorksProperly(String language) {
@@ -28,10 +28,22 @@ public class SmokeTests extends TestContext {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"RUS"})//, "LAT", "ENG"})
+    @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Logout")
     @Dataset("Dataset")
     void verifyLogoutWorksProperly(String language) {
+        open(language).
+                navigateToLoginModel().
+                login(data).
+                doLogout().
+                verifyUserIsNotLoggedIn();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"RUS", "LAT", "ENG"})
+    @Story("Logout")
+    @Dataset("Dataset")
+    void verifyUserCanSelectSeats(String language) {
         open(language).
                 navigateToLoginModel().
                 login(data).

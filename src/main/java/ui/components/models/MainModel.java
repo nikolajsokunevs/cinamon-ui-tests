@@ -37,6 +37,7 @@ public class MainModel {
         click(LNK_LOGIN.get());
         return new LoginModel(languagePrefix);
     }
+    
 
     @Step
     public MainModel doLogout(){

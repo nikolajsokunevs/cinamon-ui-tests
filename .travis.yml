@@ -3,12 +3,3 @@ sudo: false
 script:
   - mvn clean install test -Dselenium.remoteDriver=true -Dselenium.seleniumGridURL=http://46.101.239.132:4444/wd/hub
   - mvn allure:report
-deploy:
-    provider: releases
-    user: $LOGIN
-    password: $PASSWORD
-    file: "target/site/allure-maven/index.html"
-    skip_cleanup: true
-    on:
-      tags: false
-      all_branches: true
