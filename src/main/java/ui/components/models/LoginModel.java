@@ -1,10 +1,6 @@
 package ui.components.models;
 
-import config.webdriver.DriverBase;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import utils.DataProvider;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +21,7 @@ public class LoginModel extends MainModel {
         sendKeys(TXT_PASSWPRD.get(), data.getData("password"));
         scrollToElement(BTN_LOGIN.get());
         click(BTN_LOGIN.get());
-        assertTrue(isElementDisplayed(LBL_LOGIN_INFO.get(data.getData(languagePrefix, "login.info"))));
+        //assertTrue(isElementDisplayed(LBL_LOGIN_INFO.get(data.getData(languagePrefix, "login.info"))));
         waitForElement(BTN_LOGOUT.get());
         return new MainModel(languagePrefix);
     }

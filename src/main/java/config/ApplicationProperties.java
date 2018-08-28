@@ -14,20 +14,21 @@ public class ApplicationProperties {
             put("default", new Properties() {
                 {
                     //timeout and wait time properties
-                    setProperty(ApplicationProperty.WAIT_TIMEOUT_SHT.value, "5");
+                    setProperty(ApplicationProperty.WAIT_TIMEOUT_SHT.value, "7");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT.value, "10");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT_LNG.value, "30");
 
-                    setProperty(ApplicationProperty.TARGET_BROWSER.value, "CHROME"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX
+                    setProperty(ApplicationProperty.TARGET_BROWSER.value, "FIREFOX"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX
 
                     //application URL's
                     setProperty(ApplicationProperty.APP_URL.value, "http://cinamonkino.lv");
 
                     //Selenium grid settings
-                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "false");
-                    setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.239.132:4444/wd/hub");
+                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "true");
+                    setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.239.132:4444");
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.value, "");
                     setProperty(ApplicationProperty.DESIRED_PLATFORM.value, "");
+                    setProperty(ApplicationProperty.ENABLE_VIDEO.value, "true");
 
                     //Proxy settings
                     setProperty(ApplicationProperty.BROWSER_PROXY_ENABLED.value, "false");
@@ -98,7 +99,7 @@ public class ApplicationProperties {
         WAIT_TIMEOUT_SHT("application.timeoutShort"),
         WAIT_TIMEOUT("application.timeoutRegular"),
         WAIT_TIMEOUT_LNG("application.timeoutLong"),
-        SELENIUM_GRID_VIDEO_CAPTURE_ENABLED("selenium.videoCapture"),
+        ENABLE_VIDEO("enableVideo"),
         SELENIUM_GRID_VIDEO_CAPTURE_URL("selenium.videoUrl"),
         PROXY_HOST("proxy.proxyHost"), PROXY_PORT("proxy.proxyPort"),
         REMOTE_DRIVER("selenium.remoteDriver"),

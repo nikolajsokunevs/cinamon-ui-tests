@@ -11,13 +11,17 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import static config.ApplicationProperties.getBoolean;
+import static config.ApplicationProperties.getString;
 import static support.web.WebElementHelper.executeJS;
 import static support.web.WebElementHelper.navigateToPage;
 
+import org.openqa.selenium.remote.RemoteWebDriver;
 import ui.components.models.MainModel;
 import utils.DataProvider;
 
@@ -86,6 +90,11 @@ public class TestContext {
             }
             if (new File("log.log").exists())
                 attachLog();
+
+            if(getBoolean(ApplicationProperties.ApplicationProperty.ENABLE_VIDEO)&&
+                    getBoolean(ApplicationProperties.ApplicationProperty.REMOTE_DRIVER)){
+                attachVideoLink();
+            }
         }
 
         public String captureScreen(String testName) {
@@ -111,6 +120,15 @@ public class TestContext {
             byte[] log = FileUtils.readFileToByteArray(new File("log.log"));
             FileUtils.forceDeleteOnExit(new File("log.log"));
             return log;
+        }
+
+        @Attachment("Video")
+        public byte[] attachVideoLink() throws IOException {
+            String gridURL=getString(ApplicationProperties.ApplicationProperty.SELENIUM_GRID_URL);
+            String sessionId=((RemoteWebDriver)DriverBase.getDriver()).getSessionId().toString();
+            String videoUrl=gridURL+"/video/"+sessionId+".mp4";
+            byte[] video = videoUrl.getBytes();
+            return video;
         }
     }
 

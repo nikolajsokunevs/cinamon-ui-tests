@@ -1,5 +1,5 @@
 package ui.components.models;
-import meta.Seat;
+
 import utils.DataProvider;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

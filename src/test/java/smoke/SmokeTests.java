@@ -5,22 +5,18 @@ import context.TestContext;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import meta.Seat;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import ui.components.models.SeatsModel;
 import ui.components.models.TicketsModel;
-
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static support.web.WebElementHelper.waitForElements;
-import static ui.components.locators.Locators.PaymentPage.LBL_PAYMENT_METHODS;
 
 @Feature("Smoke")
 public class SmokeTests extends TestContext {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify login works properly, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Login")
     @Dataset("Dataset")
@@ -33,7 +29,7 @@ public class SmokeTests extends TestContext {
                 verifyUserDetails(data);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify logout works properly, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Login")
     @Dataset("Dataset")
@@ -45,7 +41,7 @@ public class SmokeTests extends TestContext {
                 verifyUserIsNotLoggedIn();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify user can select seats, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Seats")
     @Dataset("Dataset")
@@ -64,7 +60,7 @@ public class SmokeTests extends TestContext {
                 .verifySeatsWereCorrectlySelected(selectedSeats, data);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify price is the same at all screens, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Seats")
     @Dataset("Dataset")
@@ -81,18 +77,18 @@ public class SmokeTests extends TestContext {
                 .verifyTotalPriceIsCorrect(totalPrice);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify validation for voucher field, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Voucher")
     @Dataset("Dataset")
-    void verifyValidationForCouponField(String language) {
+    void verifyValidationForVoucherField(String language) {
         open(language)
                 .selectRandomMovie()
                 .setVoucherAndPressSubmit(data)
                 .verifyVoucherValidationIsTriggered(data);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify all payment methods are displayed, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Payment")
     @Dataset("Dataset")
@@ -102,14 +98,14 @@ public class SmokeTests extends TestContext {
                 .selectAdultTickets(1)
                 .clickNext()
                 .submitYourChoice()
-                .verifyAllPaymentMethodsAreDisplayed(4);
+                .verifyAllPaymentMethodsAreDisplayed(5);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Verify user can change order, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
     @Story("Payment")
     @Dataset("Dataset")
-    void verifyUserCanChange(String language) {
+    void verifyUserCanChangeOrder(String language) {
         TicketsModel ticketsModel = open(language)
                 .selectRandomMovie()
                 .selectAdultTickets(4);

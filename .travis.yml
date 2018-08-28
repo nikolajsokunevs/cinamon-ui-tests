@@ -1,5 +1,5 @@
 language: java
 sudo: false
 script:
-  - mvn clean install test -Dselenium.remoteDriver=true -Dselenium.seleniumGridURL=http://46.101.239.132:4444/wd/hub
+  - mvn clean install test -Dselenium.remoteDriver=true -Dselenium.seleniumGridURL=http://46.101.239.132:4444
   - mvn allure:report

@@ -1,11 +1,7 @@
 package ui.components.models;
 
-import config.webdriver.DriverBase;
 import meta.Seat;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import support.web.WebElementHelper;
 import utils.DataProvider;
 
 import java.util.ArrayList;

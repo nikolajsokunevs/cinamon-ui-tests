@@ -71,21 +71,15 @@ public class DriverFactory {
         try {
 
             if (useRemoteWebDriver) {
-                String seleniumGridUrl = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.SELENIUM_GRID_URL);
+                String seleniumGridUrl = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.SELENIUM_GRID_URL)+"/wd/hub";
                 logger.info("Running remote webdriver with url - " + seleniumGridUrl);
 
                 URL seleniumGridURL = new URL(seleniumGridUrl);
-                String desiredBrowserVersion = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.DESIRED_BROWSER_VERSION);
-                String desiredPlatform = ApplicationProperties.getString(ApplicationProperties.ApplicationProperty.DESIRED_PLATFORM);
+                boolean enableVideo = ApplicationProperties.getBoolean(ApplicationProperties.ApplicationProperty.ENABLE_VIDEO);
 
                 desiredCapabilities.setCapability("enableVNC", true);
-                if (null != desiredPlatform && !desiredPlatform.isEmpty()) {
-                    //desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
-                }
+                desiredCapabilities.setCapability("enableVideo", enableVideo);
 
-                if (null != desiredBrowserVersion && !desiredBrowserVersion.isEmpty()) {
-                    //desiredCapabilities.setVersion(desiredBrowserVersion);
-                }
                 webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
 
             } else {
