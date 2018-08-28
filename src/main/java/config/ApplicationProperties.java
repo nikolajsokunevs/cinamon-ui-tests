@@ -24,8 +24,8 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.APP_URL.value, "http://cinamonkino.lv");
 
                     //Selenium grid settings
-                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "false");
-                    setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.158.105:4444/wd/hub");
+                    setProperty(ApplicationProperty.REMOTE_DRIVER.value, "true");
+                    setProperty(ApplicationProperty.SELENIUM_GRID_URL.value, "http://46.101.239.132:4444/wd/hub");
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.value, "");
                     setProperty(ApplicationProperty.DESIRED_PLATFORM.value, "");
 
