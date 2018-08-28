@@ -1,9 +1,22 @@
 {
   "ENG": {
+    "login.info":"Login successful, you will be forwarded in a few moments...",
+    "logout.info":"Logout successful, you will be forwarded in a few moments...",
+    "row.seat":"Row %s - seat %s",
+    "voucher.error":"Invalid voucher number format."
+
   },
   "RUS": {
+    "login.info":"Вход выполнен успешно. Вы сможете продолжить через несколько секунд...",
+    "logout.info":"Выход выполнен успешно. Вы сможете продолжить через несколько секунд...",
+    "row.seat":"Ряд %s - Место %s",
+    "voucher.error":"Неправильно введен номер ваучера."
   },
   "LAT": {
+    "login.info":"Pieteikšanās ir sekmīga; pēc neilga laika tiksit novirzīts...",
+    "logout.info":"Atteikšanās ir sekmīga; pēc neilga laika tiksit novirzīts...",
+    "row.seat":"Rinda %s - sēdvieta %s",
+    "voucher.error":"Nederīgs kupona numura formāts."
   },
   "common":{
     "login":"fake@email.com",
@@ -11,6 +24,7 @@
     "fullName":"NEO HW",
     "firstName":"Neo",
     "lastName":"Hw",
-    "phone":"2345678"
+    "phone":"2345678",
+    "voucher":"fake voucher"
   }
 }

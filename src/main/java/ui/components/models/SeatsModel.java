@@ -17,24 +17,41 @@ public class SeatsModel extends MainModel{
         super(languagePrefix);
     }
 
-    public SeatsModel selectTickets(int ticketsCount, int[] expectedRows){
-        List<Seat> seats=getAllSeatsAsObjects(waitForElements(LBL_ALL_SEATS.get()));
-        List<Seat> availableSeats= seats.stream().filter(x->!"Sold".equals(x.getStatus())).collect(Collectors.toList());
+    private List<Seat> selectedSeats=new ArrayList<>();
+
+    public List<Seat> getSelectedSeats(){
+        return selectedSeats;
+    }
+
+    public SeatsModel selectSeats(int ticketsCount, int[] desirableRows){
+        List<Seat> availableSeats= getAllSeatsAsObjects(waitForElements(LBL_ALL_SEATS.get()))
+                .stream().filter(x->!"Sold".equals(x.getStatus())).collect(Collectors.toList());
         if (availableSeats.size()<ticketsCount){
             throw new IncorrectTestDataException("Incorrect testing data. Not possible select "+ticketsCount+" tickets.");
         }
-       // List<Seat> seatsInExpectedRow= seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList());
-        //if(seatsInExpectedRow.size()>=ticketsCount){
-        //    clickOnSeats(seatsInExpectedRow, ticketsCount);
-        //}else {
-         //   clickOnSeats(availableSeats, ticketsCount);
-       // }
+
+
+        for(int currentRow:desirableRows){
+            List<Seat> seatsInRow=seatsAvailableInRow(availableSeats, currentRow, ticketsCount);
+            if (seatsInRow.size()>=ticketsCount){
+                clickOnSeats(seatsInRow, ticketsCount);
+                return this;
+            }
+        }
+        clickOnSeats(availableSeats, ticketsCount);
         return this;
     }
 
-    private void clickOnSeats(List<Seat> seats, int expectedRow){
-        for(int i=0;i<expectedRow;i++){
-            jsClick(By.id(seats.get(i).getElementId()));
+    public PaymentModel submitYourChoice(){
+        click(BTN_SUBMIT.get());
+        return new PaymentModel(languagePrefix);
+    }
+
+    private void clickOnSeats(List<Seat> seats, int ticketsCount){
+        for(int i=0;i<ticketsCount;i++){
+            selectedSeats.add(seats.get(i));
+            scrollToElement(By.id(seats.get(i).getElementId()));
+            click(By.id(seats.get(i).getElementId()));
         }
     }
 
@@ -47,7 +64,7 @@ public class SeatsModel extends MainModel{
         return allSeatsAsObjects;
     }
 
-    private boolean isRowAvailableForSelect(List<Seat> seats, int expectedRow, int ticketCount){
-        return seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList()).size()>=ticketCount;
+    private List<Seat> seatsAvailableInRow(List<Seat> seats, int expectedRow, int ticketCount){
+        return seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList());
     }
 }

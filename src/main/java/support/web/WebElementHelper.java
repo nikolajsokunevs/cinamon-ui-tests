@@ -80,13 +80,13 @@ public class WebElementHelper {
     }
 
     public static void click(By locator) {
+        scrollToElement(locator);
         waitForElementToBeClickable(locator).click();
     }
 
     public static void jsClick(By locator) {
         WebElement element = waitForElement(locator);
-        JavascriptExecutor executor = (JavascriptExecutor) DriverBase.getDriver();
-        executor.executeScript("arguments[0].click();", element);
+        jsClick(element);
     }
 
     public static void jsClick(WebElement element) {

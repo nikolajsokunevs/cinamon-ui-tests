@@ -17,6 +17,7 @@ import utils.Utils;
 import java.time.LocalDate;
 import java.util.List;
 
+import static ui.components.locators.Locators.LoginPage.LBL_LOGIN_INFO;
 import static ui.components.locators.Locators.MainPage.*;
 
 public class MainModel {
@@ -60,8 +61,15 @@ public class MainModel {
     }
 
     @Step
-    public MainModel doLogout(){
+    public TicketsModel selectRandomMovie(){
+        click(LNL_SESSION_LINK.get());
+        return new TicketsModel(languagePrefix);
+    }
+
+    @Step
+    public MainModel doLogout(DataProvider data){
         click(BTN_LOGOUT.get());
+        assertTrue(isElementDisplayed(LBL_LOGIN_INFO.get(data.getData(languagePrefix, "logout.info"))));
         waitForInivsibilityOfElement(BTN_LOGOUT.get());
         return this;
     }
