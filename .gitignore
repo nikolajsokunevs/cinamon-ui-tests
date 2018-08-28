@@ -19,9 +19,38 @@
 *.zip
 *.tar.gz
 *.rar
+home-work.iml
 
 
 .gitignore
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.allure/allure-2.4.1/bin/
+.allure/allure-2.4.1/config/
+.allure/allure-2.4.1/lib/config/
+.allure/allure-2.4.1/plugins/README.txt
+.allure/allure-2.4.1/plugins/behaviors-plugin/allure-plugin.yml
+.allure/allure-2.4.1/plugins/behaviors-plugin/static/
+.allure/allure-2.4.1/plugins/custom-logo-plugin/
+.allure/allure-2.4.1/plugins/junit-xml-plugin/allure-plugin.yml
+.allure/allure-2.4.1/plugins/packages-plugin/allure-plugin.yml
+.allure/allure-2.4.1/plugins/packages-plugin/static/
+.allure/allure-2.4.1/plugins/screen-diff-plugin/
+.allure/allure-2.4.1/plugins/trx-plugin/allure-plugin.yml
+.allure/allure-2.4.1/plugins/xctest-plugin/allure-plugin.yml
+.allure/allure-2.4.1/plugins/xunit-xml-plugin/allure-plugin.yml
+.idea/
+allure-results/
+target/allure-results/
+target/classes/drivers/
+target/classes/junit-platform.properties
+target/generated-sources/
+target/generated-test-sources/
+target/maven-archiver/
+target/maven-status/
+target/site/
+target/surefire-reports/
+target/test-classes/Dataset.json
+target/test-classes/junit-platform.properties
+target/test-classes/logback-test.xml
