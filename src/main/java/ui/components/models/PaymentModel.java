@@ -47,7 +47,8 @@ public class PaymentModel extends MainModel {
 
     @Step
     public PaymentModel verifyAllPaymentMethodsAreDisplayed(int expectedPaymentMethodCount) {
-        assertEquals(expectedPaymentMethodCount, waitForElements(LBL_PAYMENT_METHODS.get()).size());
+        int actualPaymentMethodCount= waitForElements(LBL_PAYMENT_METHODS.get()).size();
+        assertEquals(expectedPaymentMethodCount, actualPaymentMethodCount, format("Expected %s payments methods, but actual count is: %s", expectedPaymentMethodCount, actualPaymentMethodCount));
         return this;
     }
 
