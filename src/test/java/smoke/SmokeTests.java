@@ -62,7 +62,7 @@ public class SmokeTests extends TestContext {
 
     @ParameterizedTest(name = "Verify price is the same at all screens, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
-    @Story("Seats")
+    @Story("Price")
     @Dataset("Dataset")
     void verifyPriceIsSameAtAllScreens(String language) {
         TicketsModel ticketsModel = open(language)
@@ -103,7 +103,7 @@ public class SmokeTests extends TestContext {
 
     @ParameterizedTest(name = "Verify user can change order, language: {0}")
     @ValueSource(strings = {"RUS", "LAT", "ENG"})
-    @Story("Payment")
+    @Story("Change order")
     @Dataset("Dataset")
     void verifyUserCanChangeOrder(String language) {
         TicketsModel ticketsModel = open(language)
