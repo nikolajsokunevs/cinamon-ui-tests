@@ -92,7 +92,7 @@ public interface Locators {
     }
 
     enum SeatsPage implements Locators {
-        LBL_ALL_SEATS(By::cssSelector, "#seatplan g"),
+        LBL_ALL_SEATS(By::cssSelector, "svg#seatplan>g"),
         BTN_SUBMIT(By::name, "submit"),;
 
         private String id;

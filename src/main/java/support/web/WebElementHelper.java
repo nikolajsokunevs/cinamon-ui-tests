@@ -35,26 +35,31 @@ public class WebElementHelper {
     }
 
     public static WebElement waitForElement(By locator) {
+        logger.info("Wait for element - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public static WebElement waitForElement(By locator, int timeout) {
+        logger.info("Wait for element - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), timeout);
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public static boolean waitForInivsibilityOfElement(By locator) {
+    public static boolean waitForinvisibilityOfElement(By locator) {
+        logger.info("Wait for invisibility of element - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     public static List<WebElement> waitForElements(By locator) {
+        logger.info("Wait for elements - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         return webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public static WebElement waitForVisibility(By locator) {
+        logger.info("Wait for elements visibility - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         try {
             return webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));

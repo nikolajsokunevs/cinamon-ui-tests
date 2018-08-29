@@ -33,7 +33,7 @@ public class PaymentModel extends MainModel {
             entry.getValue().stream().forEach(x -> seatNumbers.add(x.getId()));
             expectedString = format(expectedString, entry.getKey(), String.join(", "
                     , seatNumbers.stream().sorted().collect(Collectors.toList())));
-            assertTrue(isElementDisplayed(By.xpath(format("//td[contains(.,'%s')]", expectedString))));
+            assertTrue(isElementDisplayed(By.xpath(format("//td[contains(.,'%s')]", expectedString))), format("Text '%s' wasn't displayed", expectedString));
         }
         return this;
     }
