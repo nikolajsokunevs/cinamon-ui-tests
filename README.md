@@ -2,6 +2,7 @@ Selenium / Allure / JUnit5 / Selenoid  [![Build Status](https://travis-ci.com/no
 =======================
 ### How to run test?
         mvn clean install test    - execute all tests
+        mvn clean install test -Dselenium.remoteDriver=true -Dselenium.seleniumGridURL=http://46.101.239.132:4444   - execute on selenoid hub
         mvn allure:serve          - generate allure report and start jetty webserver for quick access
 
 ### Configuration
