@@ -31,3 +31,6 @@ Main idea: static method getDriver(), returns 1 browser instance per thread
 Selenoid is a powerful implementation of Selenium hub using Docker containers to launch browsers.
 Live Browser Screen and Logs: http://46.101.239.132:8080/#/
 Video Recording: any browser session can be saved to H.264 video (set capability 'enableVideo=true')
+
+### Allure
+Each test contains attached files: screenshot(if test was failed), logs and link to video file(if video was enabled)
