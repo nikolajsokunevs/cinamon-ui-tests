@@ -46,9 +46,15 @@ public class WebElementHelper {
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public static boolean waitForinvisibilityOfElement(By locator) {
+    public static boolean waitForInvisibilityOfElement(By locator) {
         logger.info("Wait for invisibility of element - " + locator);
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
+        return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+    public static boolean waitForInvisibilityOfElement(By locator, int timeout) {
+        logger.info("Wait for invisibility of element - " + locator);
+        WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), timeout);
         return webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 

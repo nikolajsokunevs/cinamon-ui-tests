@@ -15,7 +15,7 @@ public class ApplicationProperties {
                 {
                     //timeout and wait time properties
                     setProperty(ApplicationProperty.WAIT_TIMEOUT_SHT.value, "7");
-                    setProperty(ApplicationProperty.WAIT_TIMEOUT.value, "10");
+                    setProperty(ApplicationProperty.WAIT_TIMEOUT.value, "15");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT_LNG.value, "30");
 
                     setProperty(ApplicationProperty.TARGET_BROWSER.value, "CHROME"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX

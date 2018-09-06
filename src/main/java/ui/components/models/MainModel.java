@@ -1,10 +1,13 @@
 package ui.components.models;
 
+import static config.ApplicationProperties.ApplicationProperty.WAIT_TIMEOUT;
+import static config.ApplicationProperties.ApplicationProperty.WAIT_TIMEOUT_LNG;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static support.web.WebElementHelper.*;
 
+import static config.ApplicationProperties.*;
 import config.webdriver.DriverBase;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -27,12 +30,20 @@ public class MainModel {
         this.languagePrefix = languagePrefix.toUpperCase();
     }
 
+    public MainModel closeNewVersionPromo(){
+        executeJS("document.cookie='promo=true;; expires=Mon, 27 Aug 2019 18:34:53 GMTpath=/'");
+        jsClick(BTN_CLOSE_NEW_VERSION_PROMO.get());
+        waitForInvisibilityOfElement(BTN_CLOSE_NEW_VERSION_PROMO.get(), getInteger(WAIT_TIMEOUT_LNG));
+        return this;
+    }
+
     @Step
     public MainModel changeLanguage() {
         executeJS("document.cookie='promo=true;; expires=Mon, 27 Aug 2019 18:34:53 GMTpath=/'");
         click(BTN_CLOSE_NEW_VERSION_PROMO.get());
+        waitForInvisibilityOfElement(BTN_CLOSE_NEW_VERSION_PROMO.get());
         if (!this.languagePrefix.equals(getText(BTN_CURRENT_LANGUAGES.get()))){
-            click(BTN_LANGUAGE.get(this.languagePrefix));
+            jsClick(BTN_LANGUAGE.get(this.languagePrefix));
         }
         return this;
     }
@@ -68,7 +79,7 @@ public class MainModel {
     public MainModel doLogout(DataProvider data){
         click(BTN_LOGOUT.get());
         //assertTrue(isElementDisplayed(LBL_LOGIN_INFO.get(data.getData(languagePrefix, "logout.info"))));
-        waitForinvisibilityOfElement(BTN_LOGOUT.get());
+        waitForInvisibilityOfElement(BTN_LOGOUT.get(), getInteger(WAIT_TIMEOUT));
         return this;
     }
 

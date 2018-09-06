@@ -61,9 +61,16 @@ public class TestContext {
     }
 
     public MainModel open(String language) {
-        navigateToPage(ApplicationProperties.getString(APP_URL));
+        switch (language){
+            case "LAT":  navigateToPage(ApplicationProperties.getString(APP_URL));
+                break;
+            case "RUS":  navigateToPage(ApplicationProperties.getString(APP_URL)+"/ru");
+                break;
+            case "ENG":  navigateToPage(ApplicationProperties.getString(APP_URL)+"/en");
+                break;
+        }
         MainModel mainModel = new MainModel(language);
-        mainModel.changeLanguage();
+        mainModel.closeNewVersionPromo();
         return mainModel;
     }
 

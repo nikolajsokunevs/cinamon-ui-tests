@@ -35,7 +35,7 @@ public class SeatsModel extends MainModel{
 
 
         for(int currentRow:desirableRows){
-            List<Seat> seatsInRow=seatsAvailableInRow(availableSeats, currentRow, ticketsCount);
+            List<Seat> seatsInRow=seatsAvailableInRow(availableSeats, currentRow);
             if (seatsInRow.size()>=ticketsCount){
                 clickOnSeats(seatsInRow, ticketsCount);
                 return this;
@@ -68,7 +68,7 @@ public class SeatsModel extends MainModel{
         return allSeatsAsObjects;
     }
 
-    private List<Seat> seatsAvailableInRow(List<Seat> seats, int expectedRow, int ticketCount){
+    private List<Seat> seatsAvailableInRow(List<Seat> seats, int expectedRow){
         return seats.stream().filter(x->x.getRowId()==expectedRow).collect(Collectors.toList());
     }
 }
