@@ -14,7 +14,7 @@ public class ApplicationProperties {
             put("default", new Properties() {
                 {
                     //timeout and wait time properties
-                    setProperty(ApplicationProperty.WAIT_TIMEOUT_SHT.value, "7");
+                    setProperty(ApplicationProperty.WAIT_TIMEOUT_SHT.value, "10");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT.value, "15");
                     setProperty(ApplicationProperty.WAIT_TIMEOUT_LNG.value, "30");
 

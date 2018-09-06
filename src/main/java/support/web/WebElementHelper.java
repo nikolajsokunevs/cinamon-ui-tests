@@ -99,6 +99,7 @@ public class WebElementHelper {
     public static void actionClick(By locator) {
         logger.info("Click at element - " + locator);
         Actions action = new Actions(DriverBase.getDriver());
+        scrollToElement(locator);
         action.click(waitForElement(locator)).build().perform();
     }
 

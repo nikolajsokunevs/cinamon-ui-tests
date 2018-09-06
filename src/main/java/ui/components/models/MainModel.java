@@ -32,7 +32,7 @@ public class MainModel {
 
     public MainModel closeNewVersionPromo(){
         executeJS("document.cookie='promo=true;; expires=Mon, 27 Aug 2019 18:34:53 GMTpath=/'");
-        jsClick(BTN_CLOSE_NEW_VERSION_PROMO.get());
+        actionClick(BTN_CLOSE_NEW_VERSION_PROMO.get());
         waitForInvisibilityOfElement(BTN_CLOSE_NEW_VERSION_PROMO.get(), getInteger(WAIT_TIMEOUT_LNG));
         return this;
     }
